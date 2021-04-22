@@ -15,19 +15,24 @@
 
 // }
 
-function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
-    e.target.classList.remove('playing');
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return; // skip if it is not a transform
+    this.classList.remove('playing'); 
   }
 
   function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
+    // const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    // const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
 
-    key.classList.add('playing');
-    audio.currentTime = 0;
+    const audio = document.querySelector(`audio[data-key="${e.code}"]`);
+    const key = document.querySelector(`div[data-key="${e.code}"]`);
+
+    if (!audio) return; //Stop function from running all together
+
+    
+    audio.currentTime = 0; // rewind to the start
     audio.play();
+    key.classList.add('playing');
   }
 
   const keys = Array.from(document.querySelectorAll('.key'));
