@@ -52,6 +52,8 @@
         items.classList.add('active');
         startX = e.pageX - items.offsetLeft;
         scrolLeft = items.scrollLeft;
+        console.log(startX);
+        // console.log("true", scrolLeft);
     });
 
     items.addEventListener('mouseleave', e => {
@@ -69,6 +71,7 @@
         const walk = x - startX;
 
         items.scrollLeft = scrolLeft - walk;
+        console.log(scrollLeft);
     });
 
 
